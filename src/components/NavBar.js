@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import Login from './Login.js'
 import Search from './Search.js'
+import {Link} from "react-router-dom";
 
 function NavBar() {
   return (
@@ -11,7 +11,8 @@ function NavBar() {
             <Search />
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-            <Login />
+            <Link to={"/signin"}><button type="button" class="btn btn-info">Login</button></Link>
+            <Link to={"/signup"}><button type="button" class="btn btn-info">Register</button></Link>
           </div>
         </nav>
 
