@@ -1,0 +1,16 @@
+.Home{
+    background-color: rgb(79, 120, 146); 
+}
+
+.Home .hcontainer{
+    height: 100%;
+    min-height: 93.8vmin;
+    width: 100%;
+    margin:0;
+    padding:0;
+}
+
+.Home .movieline{
+    align-items: center;
+    flex-direction: column;
+}

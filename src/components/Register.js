@@ -1,65 +1,70 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import '../css/Forms.css'
+
 
 function Register() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [details, setDetails] = useState({login:"", email:"", password:""});
+
+    const navigate = useNavigate();
 
     const handleSubmit = event => {
         event.preventDefault();
-        // Validate form values and submit registration request
-    };
-
-    return (
-        <form onSubmit={handleSubmit} className="bg-primary text-white p-5">
-            <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    value={name}
-                    onChange={event => setName(event.target.value)}
-                />
+        axios.post('https://at.usermd.net/api/user/create', {
+            name: details.login,
+            email: details.email,
+            password: details.password,
+        })
+        .then((response) => {
+            navigate("/signin");
+        })
+    }
+    return(
+        <div className="Forms">
+            <div className="fcontainer">
+                <form onSubmit={handleSubmit} className="bg-primary text-white p-5">
+                    <div className="form-group">
+                        <label htmlFor="name">Nazwa użytkownika</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="login"
+                            name="login"
+                            onChange={event=>setDetails({...details, login: event.target.value})} 
+                            value={details.login}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="email"
+                            name="email"
+                            onChange={event=>setDetails({...details, email: event.target.value})} 
+                            value={details.email}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Hasło</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            onChange={event=>setDetails({...details, password: event.target.value})} 
+                            value={details.password}
+                        />
+                    </div>
+                <p> <button type="submit" className="btn btn-light">
+                    Rejestracja
+                </button></p>
+                    <Link to='/signin'  className='btn btn-light'>Zaloguj się</Link>
+                    <Link to='/'  className='btn btn-secondary m-2'>Powrót na strone główną</Link>
+                </form>
             </div>
-            <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="confirmPassword">Confirm password</label>
-                <input
-                    type="password"
-                    className="form-control"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={event => setConfirmPassword(event.target.value)}
-                />
-            </div>
-           <p> <button type="submit" className="btn btn-light">
-               Sign up
-           </button></p>
-            <Link to='/signin'  className='btn btn-light'>Zaloguj się</Link>
-            <Link to='/'  className='btn btn-secondary'>Powrót na strone główną</Link>
-        </form>
+        </div>
     );
 }
 

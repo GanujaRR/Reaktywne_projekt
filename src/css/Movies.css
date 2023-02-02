@@ -1,0 +1,23 @@
+.movies{
+    width: 100%;
+}
+
+.movies .mcontainer{
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    flex-direction: column;
+    width: 33vH;
+}
+.movies .moviesimage{
+    padding: 5px;
+    height: 300px;
+}
+
+.movies .title{
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}

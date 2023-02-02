@@ -1,37 +1,21 @@
-import React from 'react'
-import { Fragment } from 'react'
-import MovieCard from './MovieCard.js'
-import MovieStyle from '../css/MoviesStyle.css'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import '../css/Movies.css'
 
-function Movies() {
+function Movies({movie}) {
   return (
-  <Fragment>
-    <div className="container">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+  <div className="movies">
+      <Link to={`/details/${movie.id}`}>
+    <div className="mcontainer">
+        <img className="moviesimage" src={movie.image} alt={movie.title}/>
+      <div className="title">
+        {movie.title} 
+      </div>
     </div>
-    <div className="container">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-    </div>
-    <div className="container">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-    </div>
-  </Fragment>
-  )
+    </Link>
+  </div>
+    
+  );
 }
 
-export default Movies
+export default Movies;

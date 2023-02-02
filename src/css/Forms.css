@@ -1,0 +1,15 @@
+.Forms .fcontainer{
+    margin: auto;
+    margin-top: 100px;
+    min-width: 650px;
+    width: 50%;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity))!important;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.Forms button{
+    margin-top: 5px;
+}

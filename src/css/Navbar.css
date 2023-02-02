@@ -1,0 +1,23 @@
+.con-navbar{
+    display: flex;
+    background-color: #232334;
+    height: 10vh;
+    align-items: center;
+}
+.title{
+    font-size: 30px;
+    padding-left: 30px;
+    color: white;
+    justify-content: left;
+    text-decoration: none;
+}
+.searchbar{
+    margin-left: 50px;
+    margin-right: 60%;
+}
+.buttons{
+    justify-content: right; 
+}
+.logout{
+    align-items: center; 
+}
